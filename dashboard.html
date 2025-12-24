@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Tasks</h2>
+<a href="/add">➕ Add Task</a> | <a href="/logout">Logout</a>
+
+<p>Total: {{ pending + ongoing + completed }} | Pending: {{ pending }} | Ongoing: {{ ongoing }} | Completed: {{ completed }}</p>
+
+<h3>Pending Tasks</h3>
+<ul>
+{% for task in tasks %}
+    {% if task[4] == 'Pending' %}
+    <li style="color:red;">
+        <a href="/task/{{ task[0] }}"><b>{{ task[1] }}</b></a> - {{ task[2] }}
+        <a href="/edit/{{ task[0] }}">Edit</a>
+        <a href="/delete/{{ task[0] }}">Delete</a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<h3>Ongoing Tasks</h3>
+<ul>
+{% for task in tasks %}
+    {% if task[4] == 'Ongoing' %}
+    <li style="color:orange;">
+        <a href="/task/{{ task[0] }}"><b>{{ task[1] }}</b></a> - {{ task[2] }}
+        <a href="/edit/{{ task[0] }}">Edit</a>
+        <a href="/delete/{{ task[0] }}">Delete</a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+<h3>Completed Tasks</h3>
+<ul>
+{% for task in tasks %}
+    {% if task[4] == 'Completed' %}
+    <li style="color:green;">
+        <a href="/task/{{ task[0] }}"><b>{{ task[1] }}</b></a> - {{ task[2] }}
+        <a href="/edit/{{ task[0] }}">Edit</a>
+        <a href="/delete/{{ task[0] }}">Delete</a>
+    </li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+{% endblock %}

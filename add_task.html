@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Task</h2>
+<form method="post">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="text" name="tools" placeholder="Tools / Languages Used">
+    <select name="status" required>
+        <option value="Pending">Pending</option>
+        <option value="Ongoing">Ongoing</option>
+        <option value="Completed">Completed</option>
+    </select>
+    <button>Add</button>
+</form>
+{% endblock %}
